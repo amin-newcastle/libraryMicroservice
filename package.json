@@ -1,12 +1,29 @@
 {
   "name": "microservice-sl",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/amin-newcastle/microservice-sl.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/amin-newcastle/microservice-sl/issues"
+  },
+  "homepage": "https://gitlab.com/amin-newcastle/microservice-sl#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.3",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
