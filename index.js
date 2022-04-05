@@ -17,7 +17,7 @@ let books = [
 ];
 
 app.get('/', (req, res) => {
-    res.send('Amins Books');
+    res.send('Amins Library');
 });
 
 app.get('/api/books', (req, res) => {
