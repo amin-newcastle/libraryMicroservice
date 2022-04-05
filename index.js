@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express();
-const schema = require('/Users/muhammad.karim/Documents/Training/microservice-SL/Validations/schema.js');
+const schema = require('/Users/muhammad.karim/Documents/Training/Angular/libraryMicroservice/Validations/schema.js');
 app.use(express.json());
 
-let books = [
+let library = [
     {
         ISBN: 9781365076350,
-        Title: 'Rich Dad Poor Dad',
-        Author: 'Robert T. Kiyosaki',
+        title: 'Rich Dad Poor Dad',
+        author: 'Robert T. Kiyosaki',
     },
     {
         ISBN: 9781854242990,
-        Title: 'Personality Plus',
-        Author: 'Florence Littauer',
+        title: 'Personality Plus',
+        author: 'Florence Littauer',
     }
 ];
 
@@ -20,17 +20,17 @@ app.get('/', (req, res) => {
     res.send('Amins Library');
 });
 
-app.get('/api/books', (req, res) => {
-    res.send(books);
+app.get('/api/library', (req, res) => {
+    res.send(library);
 });
 
-app.get('/api/books/:ISBN', (req, res) => {
-    const book = books.find(b => b.ISBN === parseInt(req.params.ISBN));
+app.get('/api/library/:ISBN', (req, res) => {
+    const book = library.find(b => b.ISBN === parseInt(req.params.ISBN));
     if (!book) res.status(404).send('The book with the given ISBN was not found');
     res.send(book);
 });
 
-app.post('/api/books', (req, res) => {
+app.post('/api/library', (req, res) => {
     try {
         // Validate book
         const response = schema.validate(req.body);
@@ -39,13 +39,13 @@ app.post('/api/books', (req, res) => {
             return;
         }
 
-        // Send book object to books array
+        // Send book object to library array
         const book = {
             ISBN: req.body.ISBN,
-            Title: req.body.Title,
-            Author: req.body.Author
+            title: req.body.Title,
+            author: req.body.Author
         }
-        books.push(book);
+        library.push(book);
         res.send(book);
     } catch (e) {
         res.send(e);
