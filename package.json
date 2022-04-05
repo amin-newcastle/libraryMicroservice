@@ -20,7 +20,9 @@
   "homepage": "https://gitlab.com/amin-newcastle/microservice-sl#readme",
   "description": "",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "express": "^4.17.3",
+    "express-validation": "^3.0.8",
     "joi": "^17.6.0",
     "request": "^2.88.2"
   },

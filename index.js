@@ -1,7 +1,6 @@
-const Joi = require('joi');
-const express = require('express')
-const app = express()
-
+const express = require('express');
+const app = express();
+const schema = require('/Users/muhammad.karim/Documents/Training/microservice-SL/Validations/schema.js');
 app.use(express.json());
 
 let books = [
@@ -32,25 +31,25 @@ app.get('/api/books/:ISBN', (req, res) => {
 });
 
 app.post('/api/books', (req, res) => {
+    try {
+        // Validate book
+        const response = schema.validate(req.body);
+        if (response.error) {
+            res.status(400).send(response.error.details[0].message);
+            return;
+        }
 
-    const schema = {
-        ISBN: Joi.number().min(13).required(),
-        Title: Joi.string().required(),
-        Author: Joi.string().required
+        // Send book object to books array
+        const book = {
+            ISBN: req.body.ISBN,
+            Title: req.body.Title,
+            Author: req.body.Author
+        }
+        books.push(book);
+        res.send(book);
+    } catch (e) {
+        res.send(e);
     }
-
-    if (!req.body.ISBN || req.body.ISBN < 13) {
-        res.status(404).send('ISBN is required and must be a minimum of 13 characters');
-        return;
-    }
-
-    const book = {
-        ISBN: req.body.ISBN,
-        Title: req.body.Title,
-        Author: req.body.Author
-    }
-    books.push(book);
-    res.send(book);
 });
 
 // If the port env. var. is not undefined then parse as int and use that as the port otherwise default to 3000
