@@ -1,0 +1,8 @@
+{
+  "exec": "npm run start:docker",
+  "watch": [
+    "libraryMicroservice/*",
+    "./server.js"
+  ],
+  "ext": "js, json, yaml, ts"
+}

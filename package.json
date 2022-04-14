@@ -1,12 +1,15 @@
 {
-  "name": "microservice-sl",
+  "title": "microservice-sl",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
+    "dev": "nodemon --watch",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "start:docker": "export NODE_ENV='docker' && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,15 +21,14 @@
     "url": "https://gitlab.com/amin-newcastle/microservice-sl/issues"
   },
   "homepage": "https://gitlab.com/amin-newcastle/microservice-sl#readme",
-  "description": "",
+  "synopsis": "",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "express": "^4.17.3",
     "express-validation": "^3.0.8",
     "joi": "^17.6.0",
+    "mongoose": "^6.2.10",
+    "nodemon": "^2.0.15",
     "request": "^2.88.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
   }
 }
